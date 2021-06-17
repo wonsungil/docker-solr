@@ -1,0 +1,32 @@
+version: '3'
+services: 
+  solr: 
+    image: solr:6.6
+    ports: 
+      - "8983:8983"
+    volumes: 
+      - type: volume
+        source: data
+        target: /var/solr
+
+      - type: volume
+        source: config
+        target: /opt/solr/server/solr/configsets/myconfig
+
+      - type: volume
+        source: dic
+        target: /opt/solr/server/resources/dic
+
+      - type: volume
+        source: lib
+        target: /opt/solr/server/solr-webapp/webapp/WEB-INF/lib
+    entrypoint:
+      - solr-precreate
+      - collection1
+      - /opt/solr/server/solr/configsets/myconfig
+
+volumes:
+  data:
+  config:
+  dic:
+  lib:
