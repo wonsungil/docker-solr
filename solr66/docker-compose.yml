@@ -6,19 +6,19 @@ services:
       - "8983:8983"
     volumes: 
       - type: bind
-        source: /opt/docker-solr-start/solr66/config/data
+        source: /opt/docker-solr-start/solr66/data
         target: /var/solr
 
       - type: bind
-        source: /opt/docker-solr-start/solr66/config/conf
-        target: /opt/solr/server/solr/configsets/myconfig
+        source: /opt/docker-solr-start/solr66/settings/config/conf
+        target: /opt/solr/server/solr/configsets/myconfig/conf
 
       - type: bind
-        source: /opt/docker-solr-start/solr66/config/dic
+        source: /opt/docker-solr-start/solr66/settings/dic
         target: /opt/solr/server/resources/dic
 
       - type: bind
-        source: /opt/docker-solr-start/solr66/config/lib
+        source: /opt/docker-solr-start/solr66/settings/lib
         target: /opt/solr/server/solr-webapp/webapp/WEB-INF/lib
     entrypoint:
       - solr-precreate
